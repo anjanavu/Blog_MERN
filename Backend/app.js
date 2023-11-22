@@ -9,8 +9,11 @@ const userRouter=require('./routes/userRoute');
 app.use('/api',userRouter);
 const postRouter=require('./routes/postRoute');
 app.use('/blogs',postRouter);
-mongoose.connect('mongodb+srv://anjanavu2000:anjana2000@cluster0.trc3jzo.mongodb.net/blogDB?retryWrites=true&w=majority')
-.then(() => {
+
+MONGODB_URL = 'mongodb+srv://anjanavu2000:anjana2000@cluster0.trc3jzo.mongodb.net/blogDB?retryWrites=true&w=majority';
+
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
     console.log("Connected to DB");
   })
   .catch((error) => {
